@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthèse - Formation VSS pour Formateurs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .intro h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .module {
+            margin-bottom: 50px;
+            border-left: 5px solid;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .module::before {
+            content: attr(data-number);
+            position: absolute;
+            left: -20px;
+            top: -10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .module-1 {
+            border-color: #e74c3c;
+        }
+
+        .module-1::before {
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        .module-2 {
+            border-color: #3498db;
+        }
+
+        .module-2::before {
+            color: #3498db;
+            border-color: #3498db;
+        }
+
+        .module-3 {
+            border-color: #2ecc71;
+        }
+
+        .module-3::before {
+            color: #2ecc71;
+            border-color: #2ecc71;
+        }
+
+        .module-4 {
+            border-color: #f39c12;
+        }
+
+        .module-4::before {
+            color: #f39c12;
+            border-color: #f39c12;
+        }
+
+        .module h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+
+        .section {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            border-left: 4px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-1 .section { border-color: #e74c3c; }
+        .module-2 .section { border-color: #3498db; }
+        .module-3 .section { border-color: #2ecc71; }
+        .module-4 .section { border-color: #f39c12; }
+
+        .section h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #e17055;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .highlight-box strong {
+            color: #d63031;
+            font-size: 1.1em;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .category {
+            padding: 20px;
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+
+        .cat-1 { background: linear-gradient(135deg, #ff9a76 0%, #ff6b95 100%); }
+        .cat-2 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .cat-3 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .cat-4 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+
+        .list {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .list li {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+
+        .icon {
+            display: inline-block;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .three-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .column-box {
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .column-box:hover {
+            transform: scale(1.03);
+        }
+
+        .col-prevention {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .col-detection {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .col-reaction {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        .column-box h4 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 8px;
+        }
+
+        .key-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            font-size: 1.1em;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .key-message::before {
+            content: "💡";
+            display: block;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-top: 50px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            background: #f8f9fa;
+        }
+
+        .download-btn::before {
+            content: "⬇️ ";
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #2c3e50;
+            color: white;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .button-container {
+                display: none;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .categories,
+            .three-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Formation VSS pour Formateurs</h1>
+            <p>Prévenir et faire face aux violences sexistes et sexuelles au travail</p>
+            <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.9;">Académie Nancy-Metz | Formation de formateurs</p>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                <h2>📚 À propos de cette formation</h2>
+                <p>Cette synthèse présente les 4 modules essentiels de la formation VSS destinée aux formateurs. Elle vous permettra de comprendre les catégories juridiques, de vous positionner face aux VSS, d'adapter votre message de prévention et de maîtriser les aspects psycho-sociologiques des violences sexistes et sexuelles.</p>
+            </div>
+
+            <!-- MODULE 1 -->
+            <div class="module module-1" data-number="1">
+                <h2>Les Catégories Juridiques des VSS</h2>
+                
+                <div class="section">
+                    <h3>⚖️ Droit Civil vs Droit Pénal</h3>
+                    <p><strong>Droit Civil :</strong> Réparation du préjudice, sanctions disciplinaires au sein de l'organisation</p>
+                    <p><strong>Droit Pénal :</strong> Punition de l'auteur, sanctions pénales (amendes, emprisonnement)</p>
+                </div>
+
+                <div class="section">
+                    <h3>📋 Les 4 Catégories de VSS</h3>
+                    <div class="categories">
+                        <div class="category cat-1">
+                            <h4>1. Agissements Sexistes</h4>
+                            <ul class="list">
+                                <li>Liés au sexe/genre</li>
+                                <li>Environnement hostile</li>
+                                <li>Pas forcément sexuel</li>
+                            </ul>
+                            <p><strong>Sanction :</strong> Disciplinaire + Contravention 3 750€</p>
+                        </div>
+
+                        <div class="category cat-2">
+                            <h4>2a. Harcèlement Sexuel (répété)</h4>
+                            <ul class="list">
+                                <li>Connotation sexuelle</li>
+                                <li>Répété (2 fois minimum)</li>
+                                <li>Climat hostile</li>
+                            </ul>
+                            <p><strong>Sanction :</strong> DÉLIT - 2 ans + 30 000€</p>
+                        </div>
+
+                        <div class="category cat-2">
+                            <h4>2b. Harcèlement Sexuel (pression grave)</h4>
+                            <ul class="list">
+                                <li>1 SEULE fois suffit</li>
+                                <li>Pression grave</li>
+                                <li>Obtenir acte sexuel</li>
+                            </ul>
+                            <p><strong>Sanction :</strong> DÉLIT - 2 ans + 30 000€ (souvent aggravé)</p>
+                        </div>
+
+                        <div class="category cat-3">
+                            <h4>3. Agressions Sexuelles</h4>
+                            <ul class="list">
+                                <li>Contact physique</li>
+                                <li>SANS pénétration</li>
+                                <li>Sans consentement</li>
+                            </ul>
+                            <p><strong>Sanction :</strong> DÉLIT - 5 ans + 75 000€ (aggravé : 7 ans)</p>
+                        </div>
+
+                        <div class="category cat-4">
+                            <h4>4. Viol</h4>
+                            <ul class="list">
+                                <li>Pénétration</li>
+                                <li>Sans consentement</li>
+                                <li>Cour d'Assises</li>
+                            </ul>
+                            <p><strong>Sanction :</strong> CRIME - 15 ans (aggravé : 20 ans)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>⚠️ Points clés à retenir :</strong>
+                    <ul class="list">
+                        <li><strong>Intention ≠ Impact</strong> : "C'était pour rire" n'est pas une défense</li>
+                        <li><strong>Pathologie ≠ Absence de protection</strong> : L'employeur doit protéger ses employés</li>
+                        <li><strong>Environnement hostile</strong> = Responsabilité collective</li>
+                        <li>Le <strong>lien professionnel</strong> persiste même hors cadre de travail (LinkedIn, messages...)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- MODULE 2 -->
+            <div class="module module-2" data-number="2">
+                <h2>Le Positionnement du Formateur face aux VSS</h2>
+                
+                <div class="section">
+                    <h3>🎯 Votre rôle : 3 niveaux d'intervention</h3>
+                    
+                    <div class="three-columns">
+                        <div class="column-box col-prevention">
+                            <h4>🛡️ PRÉVENTION (AVANT)</h4>
+                            <ul class="list">
+                                <li>Intégrer le message VSS dans vos formations</li>
+                                <li>Créer un climat de respect</li>
+                                <li>Afficher les numéros d'urgence</li>
+                                <li>Poser le cadre dès le début</li>
+                            </ul>
+                            <p><strong>Les 3 piliers :</strong></p>
+                            <ul class="list">
+                                <li>Poser le cadre (5 min suffisent)</li>
+                                <li>Rendre visibles les ressources</li>
+                                <li>Créer un climat de respect</li>
+                            </ul>
+                        </div>
+
+                        <div class="column-box col-detection">
+                            <h4>👁️ DÉTECTION (PENDANT)</h4>
+                            <ul class="list">
+                                <li>Blagues/remarques sexistes répétées</li>
+                                <li>Isolement d'un·e stagiaire</li>
+                                <li>Changement de comportement</li>
+                                <li>Climat dégradé dans le groupe</li>
+                            </ul>
+                            <p><strong>Règle d'or :</strong></p>
+                            <p>1 signal = peut-être rien | 2-3 signaux = je creuse | Signal fort = j'agis</p>
+                        </div>
+
+                        <div class="column-box col-reaction">
+                            <h4>🆘 RÉACTION (APRÈS)</h4>
+                            <ul class="list">
+                                <li>Écoute bienveillante et sans jugement</li>
+                                <li>Protection immédiate si danger</li>
+                                <li>Orientation vers ressources adaptées</li>
+                                <li>Signalement à votre hiérarchie</li>
+                                <li>Traçabilité (noter factuellement)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>💬 Réagir face aux témoignages : Les 5 piliers</h3>
+                    <ul class="list">
+                        <li><span class="icon">✓</span> <strong>Croire la personne</strong> : "Je te crois" = phrase la plus importante</li>
+                        <li><span class="icon">✓</span> <strong>Valider le ressenti</strong> : "Ce n'est pas de ta faute"</li>
+                        <li><span class="icon">✓</span> <strong>Ne pas enquêter</strong> : Écouter sans chercher les preuves</li>
+                        <li><span class="icon">✓</span> <strong>Protéger immédiatement</strong> : Séparer auteur/victime si besoin</li>
+                        <li><span class="icon">✓</span> <strong>Orienter et tracer</strong> : 3919, médecine du travail, noter factuellement</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>❌ À éviter absolument :</strong>
+                    <ul class="list">
+                        <li>Promettre une confidentialité totale</li>
+                        <li>Confronter directement l'auteur</li>
+                        <li>Minimiser les faits</li>
+                        <li>Chercher à enquêter soi-même</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3>🗣️ Les méthodologies clés</h3>
+                    <p><strong>S.A.V.E.R.</strong> : Méthodologie pour accompagner une victime</p>
+                    <p><strong>R.E.C.A.D.R.E.R.</strong> : Méthodologie pour intervenir immédiatement face à un comportement inapproprié</p>
+                </div>
+
+                <div class="key-message">
+                    <strong>Message clé :</strong> Vous êtes en première ligne. Vous voyez les stagiaires plusieurs heures par jour, parfois pendant des mois. Vous êtes souvent les premiers à détecter.
+                </div>
+            </div>
+
+            <!-- MODULE 3 -->
+            <div class="module module-3" data-number="3">
+                <h2>Intégrer et Adapter la Prévention VSS</h2>
+                
+                <div class="section">
+                    <h3>⏱️ Adapter selon la durée de formation</h3>
+                    
+                    <div class="categories">
+                        <div class="category cat-1">
+                            <h4>Formations Courtes (1 jour)</h4>
+                            <p><strong>Timing :</strong> 5 min en introduction</p>
+                            <p><strong>Format :</strong></p>
+                            <ul class="list">
+                                <li>Message oral direct</li>
+                                <li>Affichage permanent numéros</li>
+                                <li>Phrase dans livret stagiaire</li>
+                            </ul>
+                            <p><strong>Message type :</strong> "Ici, on se respecte. Pas de remarques sexistes, pas de gestes déplacés. Si souci, vous venez me voir."</p>
+                        </div>
+
+                        <div class="category cat-2">
+                            <h4>Formations Moyennes (1 semaine à 1 mois)</h4>
+                            <p><strong>Timing :</strong> 15-30 min module dédié semaine 1</p>
+                            <p><strong>Format :</strong></p>
+                            <ul class="list">
+                                <li>Activité participative</li>
+                                <li>Co-construction charte</li>
+                                <li>Discussion définitions</li>
+                            </ul>
+                            <p><strong>Focus :</strong> Créer une dynamique de groupe saine + Rôle du témoin</p>
+                        </div>
+
+                        <div class="category cat-3">
+                            <h4>Formations Longues (plusieurs mois)</h4>
+                            <p><strong>Timing :</strong> 1h module complet + rappels réguliers</p>
+                            <p><strong>Format :</strong></p>
+                            <ul class="list">
+                                <li>Module structuré</li>
+                                <li>Intervention expert possible</li>
+                                <li>Intégration transversale</li>
+                            </ul>
+                            <p><strong>Focus :</strong> Système complet et suivi dans la durée</p>
+                        </div>
+
+                        <div class="category cat-4">
+                            <h4>Publics Spécifiques (FLE...)</h4>
+                            <p><strong>Adaptations nécessaires :</strong></p>
+                            <ul class="list">
+                                <li>Barrière linguistique</li>
+                                <li>Différences culturelles</li>
+                                <li>Supports visuels renforcés</li>
+                                <li>Interprétariat si besoin</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>📌 Principe universel :</strong> Quelle que soit la durée, la prévention VSS doit TOUJOURS être présente. C'est une question d'obligation légale et de responsabilité professionnelle.
+                </div>
+            </div>
+
+            <!-- MODULE 4 -->
+            <div class="module module-4" data-number="4">
+                <h2>Aspects Psycho-Sociologiques et Conséquences des VSS</h2>
+                
+                <div class="section">
+                    <h3>📊 Comprendre les chiffres</h3>
+                    <p><strong>Le "chiffre noir" :</strong> Écart entre VSS réellement subies et VSS déclarées (seulement 10-30% émergent)</p>
+                    <ul class="list">
+                        <li>1 femme sur 3 déclare avoir subi du harcèlement sexuel au travail dans sa carrière</li>
+                        <li>70% des victimes de VSS ne portent jamais plainte</li>
+                        <li>Secteurs les plus touchés : Hôtellerie-restauration, BTP, Santé</li>
+                    </ul>
+                    <p><strong>Votre posture :</strong> Transmettre des ordres de grandeur fiables, rester centré sur les mécanismes, guider vers les ressources</p>
+                </div>
+
+                <div class="section">
+                    <h3>🧠 Les 4 réactions face au danger</h3>
+                    <div class="categories">
+                        <div class="category cat-1">
+                            <h4>FIGHT (Combattre)</h4>
+                            <p>Réaction rare en contexte professionnel</p>
+                        </div>
+                        <div class="category cat-2">
+                            <h4>FLIGHT (Fuir)</h4>
+                            <p>Évitement, absentéisme</p>
+                        </div>
+                        <div class="category cat-3">
+                            <h4>FREEZE (Sidération)</h4>
+                            <p>Paralysie, incapacité à réagir</p>
+                        </div>
+                        <div class="category cat-4">
+                            <h4>FAWN (Soumission)</h4>
+                            <p>Apaiser l'agresseur pour survivre</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px; font-weight: bold; color: #e74c3c;">⚠️ Ces réactions sont INVOLONTAIRES et ne signifient PAS consentement</p>
+                </div>
+
+                <div class="section">
+                    <h3>📈 Le continuum des comportements</h3>
+                    <p><strong>Escalade progressive si non stoppée :</strong></p>
+                    <div style="display: flex; align-items: center; margin: 20px 0; flex-wrap: wrap; gap: 15px;">
+                        <div style="flex: 1; min-width: 200px; background: #ffeaa7; padding: 15px; border-radius: 10px;">
+                            <strong>1. Agissements sexistes</strong>
+                            <p>Commentaires, blagues, gestes ambigus</p>
+                        </div>
+                        <span style="font-size: 2em;">→</span>
+                        <div style="flex: 1; min-width: 200px; background: #fdcb6e; padding: 15px; border-radius: 10px;">
+                            <strong>2. Harcèlement</strong>
+                            <p>Répétition créant environnement hostile</p>
+                        </div>
+                        <span style="font-size: 2em;">→</span>
+                        <div style="flex: 1; min-width: 200px; background: #e17055; color: white; padding: 15px; border-radius: 10px;">
+                            <strong>3. Agression</strong>
+                            <p>Contact physique non consenti</p>
+                        </div>
+                    </div>
+                    <p style="font-weight: bold; color: #2ecc71; font-size: 1.2em;">✓ Plus on intervient tôt, plus on prévient l'escalade</p>
+                </div>
+
+                <div class="section">
+                    <h3>🔍 Facteurs favorisants chez l'auteur</h3>
+                    <p><strong>Facteurs individuels :</strong></p>
+                    <ul class="list">
+                        <li>Sentiment d'impunité</li>
+                        <li>Déni de la gravité ("c'est juste pour rire")</li>
+                        <li>Distorsions cognitives</li>
+                    </ul>
+                    <p><strong>Facteurs organisationnels :</strong></p>
+                    <ul class="list">
+                        <li>Culture du silence</li>
+                        <li>Absence de sanctions</li>
+                        <li>Déséquilibres de pouvoir non régulés</li>
+                        <li>Isolement des victimes potentielles</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-style: italic;">⚠️ Comprendre n'est pas excuser, mais connaître les mécanismes aide à la prévention</p>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>💡 Conséquences psycho-traumatiques :</strong>
+                    <ul class="list">
+                        <li>30% des victimes développent un syndrome de stress post-traumatique (PTSD)</li>
+                        <li>Sidération, mémoire traumatique, troubles anxieux et dépressifs</li>
+                        <li>Impact durable sur la vie professionnelle et personnelle</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- RESSOURCES -->
+            <div class="section" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border: none;">
+                <h3>📞 Ressources essentielles</h3>
+                <ul class="list">
+                    <li><strong>3919</strong> : Violences Femmes Info (gratuit, anonyme, 24h/24)</li>
+                    <li><strong>Médecine du travail</strong> : Accompagnement et orientation</li>
+                    <li><strong>Défenseur des droits</strong> : defenseurdesdroits.fr</li>
+                    <li><strong>Haut Conseil à l'Égalité (HCE)</strong> : Rapports et statistiques</li>
+                    <li><strong>IFOP, INSEE</strong> : Données chiffrées fiables</li>
+                </ul>
+            </div>
+
+            <div class="key-message">
+                <strong>En tant que formateur·rice, vous êtes un acteur clé de la prévention des VSS.</strong><br>
+                Votre rôle n'est pas d'enquêter ou de juger, mais d'écouter, protéger, orienter et signaler.
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="download-btn" onclick="window.print()">Télécharger / Imprimer cette synthèse</button>
+        </div>
+
+        <div class="footer">
+            <p><strong>Formation VSS pour Formateurs</strong> | Académie Nancy-Metz</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Mélanie LAIZET | Novembre 2025</p>
+            <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">Document de synthèse - Pour une consultation rapide des concepts essentiels</p>
+        </div>
+    </div>
+</body>
+</html>
